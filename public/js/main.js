@@ -17,48 +17,56 @@
   window.addEventListener('load', toggleScrolled);
 
   /**
-   * Mobile nav toggle
+   * Clean Mobile Navigation Toggle
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const body = document.querySelector('body');
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  function toggleMobileNav() {
+    const isActive = mobileNav.classList.contains('active');
+    const toggleIcon = mobileNavToggleBtn.querySelector('i');
+    
+    if (isActive) {
+      // Close mobile nav
+      mobileNav.classList.remove('active');
+      body.classList.remove('mobile-nav-active');
+      toggleIcon.className = 'bi bi-list';
+    } else {
+      // Open mobile nav
+      mobileNav.classList.add('active');
+      body.classList.add('mobile-nav-active');
+      toggleIcon.className = 'bi bi-x';
+    }
   }
+  
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener('click', toggleMobileNav);
   }
+
+  // Close mobile nav when clicking on a link
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileNav.classList.contains('active')) {
+        toggleMobileNav();
+      }
+    });
+  });
 
   // Close mobile nav when clicking on overlay
   const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
   if (mobileNavOverlay) {
-    mobileNavOverlay.addEventListener('click', mobileNavToogle);
+    mobileNavOverlay.addEventListener('click', toggleMobileNav);
   }
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
+  
+  // Close mobile nav on window resize if window becomes larger
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 1200 && mobileNav.classList.contains('active')) {
+      toggleMobileNav();
+    }
   });
 
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
 
   /**
    * Preloader

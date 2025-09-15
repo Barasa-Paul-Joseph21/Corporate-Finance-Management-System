@@ -1,33 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - CFMS Corporate Finance Management System</title>
-  <meta name="description" content="Get in touch with CFMS support team for help with your financial management needs">
-  <meta name="keywords" content="CFMS contact, support, help, corporate finance">
-
-  <!-- Favicons -->
-  {{-- <link href="assets/img/favicon.png" rel="icon"> --}}
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
-  <!-- Custom Contact Styles -->
-  <style>
+@push('styles')
+    
+   <style>
     .contact-hero {
       background: linear-gradient(135deg, var(--accent-color) 0%, #1e3c72 100%);
       color: white;
@@ -95,34 +68,10 @@
       color: white;
     }
   </style>
-</head>
 
-<body>
+@endpush
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">CFMS</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <!-- <li><a href="index.html#about">About</a></li> -->
-          <!-- <li><a href="index.html#features">Features</a></li> -->
-          <li><a href="/contact" class="active">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted">Login</a>
-
-    </div>
-  </header>
-
-  <!-- Mobile Navigation Overlay -->
-  <div class="mobile-nav-overlay"></div>
+<x-layout>
 
   <!-- Contact Hero Section -->
   <section class="contact-hero">
@@ -226,60 +175,25 @@
     </div>
   </section>
 
-  <footer id="footer" class="footer">
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-6 col-md-6 footer-about">
-          <a href="/" class="d-flex align-items-center">
-            <span class="sitename">CFMS</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>Corporate Finance Management System</p>
-            <p class="mt-3"><strong>Support:</strong> <span>support@cfms.com</span></p>
-            <p><strong>Help:</strong> <span>Need assistance? Contact our support team</span></p>
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-md-6 footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="/">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="/contact">Contact</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Help</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="">Login</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright 2025</span> <strong class="px-1 sitename">CFMS</strong> <span>All Rights Reserved</span></p>
-    </div>
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
 
-  <!-- Main JS File -->
-  <script src="{{ asset('js/main.js') }}"></script>
+</x-layout>    
 
 
-  <script>
-    // Initialize AOS
-    AOS.init();
 
-    // Handle form submission
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-    });
-  </script>
+@push('scripts')
+<script>
+  // Initialize AOS
+  AOS.init();
 
-</body>
-
-</html>
+  // Handle form submission
+  document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+  });
+</script>
+@endpush
